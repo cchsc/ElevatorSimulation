@@ -17,17 +17,16 @@ int main()
 {
     Person* person[MAX_PPL];
     for(int i = 0; i < MAX_PPL; ++i){
-        std::stringstream strstream;
-        strstream << i;
-        std::string outputString = strstream.str();
-        person[i] = new Person(0, 1,  outputString);
+        person[i] = new Person(0, 1,  i);
         std::cout << *(person[i]);
     }
 	
     Elevator* elevator[2];
-    for(int i = 0; i < 2; ++i)
-        elevator[i] = new Elevator(MAX_PPL, "screw this");
-	
+    for(int i = 0; i < 2; ++i){
+        elevator[i] = new Elevator(MAX_PPL, i);
+        elevator[i]->people().push_back(*person[i]);
+        std::cout << *(elevator[i]);
+    }
     Lobby* lobby[MAX_FLOOR];
     for(int i = 0; i < MAX_FLOOR; ++i)
         lobby[i] = new Lobby(MAX_PPL);

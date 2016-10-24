@@ -7,18 +7,18 @@
 class Person
 {
 public:
-    Person(int, int, std::string);
+    Person(int, int, int);
     ~Person();
     int source() const {return source_;}
     int & source() {return source_;}
     int destination() const {return destination_;}
     int & destination() {return destination_;}
-    std::string id() const{return id_;}
-    std::string & id(){return id_;}
+    int id() const{return id_;}
+    int & id(){return id_;}
     
 private:
     int source_, destination_;
-    std::string id_;
+    int id_;
     
 protected:
 };
@@ -34,9 +34,9 @@ protected:
 inline
 std::ostream & operator<<(std::ostream & cout,
                           const Person & p) {
-    cout << "<Source: " << p.source()
-         << "\nDestination: " << p.destination()
-         << "\nID: " << p.id() << ">\n";
+    cout << "\t<Source: " << p.source()
+         << "\n\tDestination: " << p.destination()
+         << "\n\tID: " << p.id() << ">\n";
     return cout;
 }
 
