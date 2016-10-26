@@ -7,7 +7,7 @@
 class Person
 {
 public:
-    Person(int, int, int);
+    Person(int, int, int, const int);
     ~Person();
     int source() const {return source_;}
     int & source() {return source_;}
@@ -15,10 +15,11 @@ public:
     int & destination() {return destination_;}
     int id() const{return id_;}
     int & id(){return id_;}
+    int WEIGHT() const{return WEIGHT_;}
     
 private:
-    int source_, destination_;
-    int id_;
+    int source_, destination_, id_;
+    int WEIGHT_;
     
 protected:
 };
@@ -30,15 +31,14 @@ protected:
 // std::cout << x << y
 // translates
 // operator<<( operator<<(std::cout, x), y)
+// std::cout << x << y
+// translates
+// operator<<( operator<<(std::cout, x), y)
 
-inline
-std::ostream & operator<<(std::ostream & cout,
-                          const Person & p) {
-    cout << "\t<Source: " << p.source()
-         << "\n\tDestination: " << p.destination()
-         << "\n\tID: " << p.id() << ">\n";
-    return cout;
-}
 
-#endif 
 
+std::ostream & operator<<(std::ostream &,
+                          const Person &);
+
+#endif
+ 
